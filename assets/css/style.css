@@ -1,0 +1,151 @@
+body {
+	font-family: monospace;
+	font-size: 16px;
+	background: #6d6a66;
+	background-image: radial-gradient(circle, #161019, #262029, #363039, #464049, #4a4447, #525652, #5e585d, #6d6a66);
+	overflow: hidden;
+}
+body table {
+	margin: 25px auto;
+}
+body table#hud {
+	background-image: url('/assets/imgs/hud.png');
+}
+body table#hud h1 {
+	text-align: center;
+	height: 24px;
+	padding: 0;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+body table thead tr th {
+	border-collapse: collapse;
+	text-align: center;
+	height: 24px;
+}
+body table#hud {
+	border-radius: 12px;
+	margin-bottom: 32px;
+	box-shadow: 0 1px 5px 6px rgba(0, 0, 0, 0.4);
+	overflow: hidden;
+}
+table, table td {
+	border-collapse: collapse;
+	border: none;
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+table td {
+	width: 40px;
+	height: 40px;
+	background-size: 40px 40px;
+	position: relative;
+	z-index: 1;
+}
+td:after, td:before {
+	content: '';
+	display: inline-block;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+	background-size: 40px 40px;
+	z-index: 10;
+	border: none;
+}
+td.pavement {
+	background-image: url('/assets/imgs/pavement.png');
+	background-color: grey;
+	background-blend-mode: overlay;
+}
+td.wall {
+	background-image: url('/assets/imgs/wall.png');
+}
+td[data-cell="$"]:after {
+	background-image: url('/assets/imgs/box.png');
+}
+td[data-cell="$"].target:after {
+	background-image: url('/assets/imgs/box_on_target.png');
+}
+td[data-cell="@"]:after, td[data-cell="@"].target:after {
+	background-image: url('/assets/imgs/hero_down.png');
+}
+	td[data-cell="@"].dir-down:after, td[data-cell="@"].dir-down.target:after {
+		background-image: url('/assets/imgs/hero_down.png');
+	}
+	td[data-cell="@"].dir-up:after, td[data-cell="@"].dir-up.target:after {
+		background-image: url('/assets/imgs/hero_up.png');
+	}
+	td[data-cell="@"].dir-right:after, td[data-cell="@"].dir-right.target:after {
+		background-image: url('/assets/imgs/hero_right.png');
+	}
+	td[data-cell="@"].dir-left:after, td[data-cell="@"].dir-left.target:after {
+		background-image: url('/assets/imgs/hero_left.png');
+	}
+		/**\/
+		@keyframes moving_down {
+			0% { background-image: url('/assets/imgs/hero_down.png'); }
+			25% { background-image: url('/assets/imgs/hero_down_1.png'); }
+			50% { background-image: url('/assets/imgs/hero_down.png'); }
+			75% { background-image: url('/assets/imgs/hero_down_2.png'); }
+		}
+		@keyframes moving_up {
+			0% { background-image: url('/assets/imgs/hero_up.png'); }
+			25% { background-image: url('/assets/imgs/hero_up_1.png'); }
+			50% { background-image: url('/assets/imgs/hero_up.png'); }
+			75% { background-image: url('/assets/imgs/hero_up_2.png'); }
+		}
+		@keyframes moving_right {
+			0% { background-image: url('/assets/imgs/hero_right.png'); }
+			25% { background-image: url('/assets/imgs/hero_right_1.png'); }
+			50% { background-image: url('/assets/imgs/hero_right.png'); }
+			75% { background-image: url('/assets/imgs/hero_right_2.png'); }
+		}
+		@keyframes moving_left {
+			0% { background-image: url('/assets/imgs/hero_left.png'); }
+			25% { background-image: url('/assets/imgs/hero_left_1.png'); }
+			50% { background-image: url('/assets/imgs/hero_left.png'); }
+			75% { background-image: url('/assets/imgs/hero_left_2.png'); }
+		}
+		td[data-cell="@"].moving:after, td[data-cell="@"].moving.target:after {
+			animation-duration: 0.25s;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+			animation-direction: alternate;
+		}
+		td[data-cell="@"].moving.dir-down:after, td[data-cell="@"].moving.dir-down.target:after {
+			animation-name: moving_down;
+		}
+		td[data-cell="@"].moving.dir-up:after, td[data-cell="@"].moving.dir-up.target:after {
+			animation-name: moving_up;
+		}
+		td[data-cell="@"].moving.dir-right:after, td[data-cell="@"].moving.dir-right.target:after {
+			animation-name: moving_right;
+		}
+		td[data-cell="@"].moving.dir-left:after, td[data-cell="@"].moving.dir-left.target:after {
+			animation-name: moving_left;
+		}
+		/**/
+td.target:before {
+	background-image: url('/assets/imgs/target.png');
+	opacity: 0.5;
+	z-index: 8;
+}
+#notice {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	z-index: 12;
+	font-size: 1.5em;
+	background: rgba(0, 0, 0, 0.5);
+	padding-top: 10%;
+	text-align: center;
+}
+#notice, #notice a {
+	color: #fff;
+}
