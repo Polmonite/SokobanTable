@@ -22,6 +22,7 @@ Via get parameters you can specify:
 
 * `level`: (int) level to play (min: 1; max: 85).
 
-## Assets
+## Credits
 
 Used assets by [Kenney.nl](https://www.kenney.nl/assets/sokoban).
+I stoled the levels from this open source implementation of Sokoban by Github user [Leo Liu](https://github.com/leoliu/sokoban/blob/master/sokoban.levels).
