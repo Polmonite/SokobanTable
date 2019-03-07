@@ -150,17 +150,24 @@ function Game() {
 			'You Won!<br/><a href="?level=' + (level + 1) + '">Next level!</a>'
 		).show();
 	};
+	// <x, y> is the hero destination cell
+	// <x2, y2> is the eventual box destination cell
+	// dir is used only to change the hero sprite direction
 	game.move = function(x, y, x2, y2, dir) {
 		let src = game.hero.x + '-' + game.hero.y;
 		let dest = x + '-' + y;
 		let pushDest = x2 + '-' + y2;
+		// canMove check if the <x, y> cell is empty
 		if (game.canMove(x, y)) {
 			game.updateHero(src, dest, dir);
+		// canPush check if the <x, y> cell is is a box and <x2, y2> is empty
 		} else if (game.canPush(x, y, x2, y2)) {
 			game.moveCell(dest, pushDest);
 			game.updateHero(src, dest, dir);
 			game.incPushes();
 		}
+		// check if the level is completed; Controller.off simply remove event
+		// handlers so the hero doesn't go around
 		if (game.check()) {
 			Controller.off('up');
 			Controller.off('down');
